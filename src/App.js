@@ -105,9 +105,9 @@ useEffect(() => {
       <div className="app">
         <div className="app__left">
         <div className="app__header">
-       <h1>COVID-19 TRACKER</h1>
+       <h1 style={{color:"#FFF"}}>COVID-19 TRACKER</h1>
       <FormControl className="app__dropdown">   {/* BOM css */}
-      <Select  variant="outlined" value={country} onChange={onCountryChange}>
+      <Select  variant="outlined" value={country} onChange={onCountryChange} >
         <MenuItem value="worldwide" >WorldWide</MenuItem>
         {Countries.map((country,index)=>(
         <MenuItem value={country.value} key={index}>{country.name}</MenuItem>

@@ -3,6 +3,9 @@
   font-family: 'Nunito', sans-serif;;
 }
 
+body{
+  background-color: #1E2124
+}
 
 .app__header{
   display: flex;
@@ -25,6 +28,10 @@
 
 .app__left{
   flex:0.9
+}
+
+.app__dropdown{
+  background-color: white;
 }
 
 @media (max-width:990px) {
