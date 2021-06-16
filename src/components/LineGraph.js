@@ -66,7 +66,7 @@ const options = {
     return charData
  }  
 
-export const LineGraph = () => {
+export const LineGraph = ({...props}) => {
 
     const [data,setdata]=useState({})
   
@@ -93,7 +93,7 @@ useEffect(() => {
 
 
     return (
-        <div className="Graph">
+        <div className={props.className}>
           
                 {data?.length > 0 && (
             <Line data={{
