@@ -16,7 +16,14 @@ function App() {
 const [country,setcountry]=useState('worldwide')
 const [CurrentInfo,setCurrentInfo]=useState([])
 const [tableData,settableData]=useState([])
+const [mapCenter,setmapCenter]=useState({
+    lat:34.80746,lng:-40.4796           //cnter of the pacific ocean
+})
+const [MapData,setMapData]=useState([])
+const [zoom,setzoom]=useState(3)
 
+
+const [casesTypes,setcasesTypes]=useState('cases')
 useEffect(() => {
 
   const fetchAll=async()=>{
@@ -44,7 +51,9 @@ useEffect(() => {
     const response=await axios.get('https://disease.sh/v3/covid-19/countries')
     try{
       // console.log(response.data)
-
+        //TODO:
+        console.log(response.data)
+     
       const fetchData=response.data.map((cnt)=>({
 
         name:cnt.country,
@@ -56,6 +65,8 @@ useEffect(() => {
 
       const sortedData=sortData(response.data)
       settableData(sortedData)
+
+      setMapData(response.data)
     }catch(err){
       console.log(err)
     }
@@ -81,6 +92,8 @@ useEffect(() => {
   try{
       const count=await axios(url)
     setCurrentInfo(count.data)
+      setmapCenter({lat:count.data.countryInfo.lat,lng:count.data.countryInfo.long})
+      setzoom(4)
 
   }catch(err){
 
@@ -106,19 +119,19 @@ useEffect(() => {
       </div>
 
       <div className="app__status">
-        <Infobox title="CONFIRMED CASES" cases={CurrentInfo.todayCases} total={CurrentInfo.cases}></Infobox>
-        <Infobox title="RECOVERED " cases={CurrentInfo.todayRecovered} total={CurrentInfo.recovered}></Infobox>
-        <Infobox title="DEATHS" cases={CurrentInfo.todayDeaths} total={CurrentInfo.deaths}></Infobox>
+        <Infobox title="CONFIRMED CASES" cases={CurrentInfo.todayCases} total={CurrentInfo.cases} onClick={()=>setcasesTypes("cases")}></Infobox>
+        <Infobox title="RECOVERED " cases={CurrentInfo.todayRecovered} total={CurrentInfo.recovered} onClick={()=>setcasesTypes("recovered")}></Infobox>
+        <Infobox title="DEATHS" cases={CurrentInfo.todayDeaths} total={CurrentInfo.deaths} onClick={()=>setcasesTypes("deaths")}></Infobox>
       </div>
 
-      <Map/>
+      <Map center={mapCenter} zoom={zoom} countries={MapData} casesTypes={casesTypes}/>
       </div>
 
        
       <Card className="app__right">  
       {/* rightstuff */}
           <CardContent>
-            <h1>Lives cases by country</h1> 
+            <h1>Live cases by country</h1> 
             <Table countries={tableData}/>
             <h3>World Wide new cases</h3>
             <LineGraph/>

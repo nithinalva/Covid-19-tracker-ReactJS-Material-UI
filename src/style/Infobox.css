@@ -1,0 +1,8 @@
+.infobox{
+     flex: 1;
+    cursor: pointer;
+} 
+.infobox:not(:last-child){
+    margin-right: 10px;
+}
+
