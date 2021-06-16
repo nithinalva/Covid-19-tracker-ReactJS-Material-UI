@@ -119,9 +119,9 @@ useEffect(() => {
       </div>
 
       <div className="app__status">
-        <Infobox title="CONFIRMED CASES" cases={CurrentInfo.todayCases} total={CurrentInfo.cases} onClick={()=>setcasesTypes("cases")}></Infobox>
-        <Infobox title="RECOVERED " cases={CurrentInfo.todayRecovered} total={CurrentInfo.recovered} onClick={()=>setcasesTypes("recovered")}></Infobox>
-        <Infobox title="DEATHS" cases={CurrentInfo.todayDeaths} total={CurrentInfo.deaths} onClick={()=>setcasesTypes("deaths")}></Infobox>
+        <Infobox title="CONFIRMED CASES" cases={CurrentInfo.todayCases} total={CurrentInfo.cases} onClick={()=>setcasesTypes("cases")} active={casesTypes==="cases"}></Infobox>
+        <Infobox title="RECOVERED " cases={CurrentInfo.todayRecovered} total={CurrentInfo.recovered} onClick={()=>setcasesTypes("recovered")} active={casesTypes==="recovered"}></Infobox>
+        <Infobox title="DEATHS" cases={CurrentInfo.todayDeaths} total={CurrentInfo.deaths} onClick={()=>setcasesTypes("deaths")} active={casesTypes==="deaths"}></Infobox>
       </div>
 
       <Map center={mapCenter} zoom={zoom} countries={MapData} casesTypes={casesTypes}/>
@@ -134,7 +134,7 @@ useEffect(() => {
             <h1>Live cases by country</h1> 
             <Table countries={tableData}/>
             <h3>World Wide new cases</h3>
-            <LineGraph/>
+            <LineGraph className="app__graph"/>
           </CardContent>
 
       </Card>

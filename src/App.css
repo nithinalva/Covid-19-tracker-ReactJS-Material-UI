@@ -31,9 +31,17 @@ body{
 }
 
 .app__dropdown{
-  background-color: white;
+  background-color: #1E2124;
+  color: #fff;
+  
 }
+.MuiInputBase-input {
+  color: #fff !important;
+}
+.MuiSelect-outlined { 
 
+ color: white !important;
+}
 @media (max-width:990px) {
   
  .app{
@@ -49,4 +57,19 @@ body{
   justify-content: center;
   margin-top: 2rem;
 
+}
+
+.app__right{
+  display: flex;
+  flex-direction: column;
+}
+
+.app__right .MuiCardContent-root{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.app__graph{
+  flex-grow: 1;
 }

@@ -6,3 +6,7 @@
     margin-right: 10px;
 }
 
+.infobox--active{
+
+    border-top: 10px solid blueviolet;
+}
